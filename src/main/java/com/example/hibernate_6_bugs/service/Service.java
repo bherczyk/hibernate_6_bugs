@@ -2,10 +2,11 @@ package com.example.hibernate_6_bugs.service;
 
 import com.example.hibernate_6_bugs.model.*;
 import com.example.hibernate_6_bugs.repository.Repository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityNotFoundException;
-import org.hibernate.jpa.SpecHints;
+import org.hibernate.jpa.QueryHints;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 
 @org.springframework.stereotype.Service
 public class Service {
@@ -47,7 +48,7 @@ public class Service {
         carsGraph.addAttributeNodes("features", "info");
         return entityManager.createQuery("select c from Company c where c.id = :id", Company.class)
                 .setParameter("id", id)
-                .setHint(SpecHints.HINT_SPEC_FETCH_GRAPH, companyGraph)
+                .setHint(QueryHints.HINT_FETCHGRAPH, companyGraph)
                 .getSingleResult();
     }
 

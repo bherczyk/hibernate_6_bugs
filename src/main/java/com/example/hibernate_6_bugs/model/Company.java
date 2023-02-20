@@ -1,6 +1,7 @@
 package com.example.hibernate_6_bugs.model;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 public class Company {
